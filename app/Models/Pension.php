@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Pension extends Model
 {
+    public function tarifsCatalogue()
+    {
+        return $this->hasMany(\App\Models\TarifCatalogue::class, 'pension_id');
+    }
     use HasFactory;
 
     public $timestamps = false;

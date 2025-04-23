@@ -13,6 +13,8 @@ use App\Http\Controllers\TarificationController;
 use App\Http\Controllers\TypeGardiennageController;
 use App\Http\Controllers\UtilisateurController;
 use App\Http\Controllers\ProprietaireAuthController;
+use App\Http\Controllers\CatalogueController;
+use App\Http\Controllers\TarifCatalogueController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -72,3 +74,7 @@ Route::get('/utilisateurs', [UtilisateurController::class, 'index']);
 Route::post('/utilisateurs', [UtilisateurController::class, 'store']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+
+// Routes pour les catalogues et tarifs (publiques)
+Route::apiResource('catalogues', CatalogueController::class);
+Route::apiResource('tarif-catalogues', TarifCatalogueController::class);
